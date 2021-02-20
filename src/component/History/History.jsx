@@ -1,12 +1,12 @@
+import {useLayoutEffect, useState} from "react";
 import React from 'react';
-import {useEffect, useState} from "react";
 import './history.scss'
 import Warning from "../Warning/Warning";
 
 const HistoryPage = () => {
     const [historyArr, setHistory] = useState([])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         let arr = JSON.parse(localStorage.getItem('history'))
         if (arr) {
             setHistory(arr)
