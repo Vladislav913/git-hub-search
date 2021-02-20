@@ -6,12 +6,13 @@ import {getData} from "../../api/search";
 import React, {useEffect, useState} from "react";
 import SelectSort from "../Select/Select";
 import Warning from "../Warning/Warning";
+import CircularIndeterminate from "../Spiner/Spiner";
 
 
 const Catalog = () => {
     const [page, changePage] = useState(1);
     const [option, changeOption] = useState('')
-    const {data, total_count, value, totalPage, errorStatus} = useSelector((state) => state.search)
+    const {data, total_count, value, totalPage, errorStatus, loading} = useSelector((state) => state.search)
     const dispatch = useDispatch()
 
 
@@ -25,6 +26,7 @@ const Catalog = () => {
 
     return (
         <>
+            {loading ? <CircularIndeterminate/> : null}
             {!errorStatus && data.length > 0 ? <div className="catalog">
                 <div className="container">
                     <div className="catalog__wrap">
@@ -48,8 +50,10 @@ const Catalog = () => {
                     </div>
                 </div>
             </div> : errorStatus ? <Warning text={errorStatus}/> :
-                total_count === 0 ? <Warning text={notResult}/> : null
+               null
             }
+            { total_count === 0 ? <Warning text={notResult}/> : null}
+
 
         </>
     )

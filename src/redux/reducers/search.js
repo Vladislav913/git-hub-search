@@ -1,10 +1,11 @@
-import {GET_DATA, SET_ERROR, SET_VALUE} from "../actions/search";
+import {GET_DATA, LOADING, SET_ERROR, SET_VALUE} from "../actions/search";
 
 const initialState = {
     data: [],
     total_count: null,
     totalPage: null,
     value: null,
+    loading: false,
     errorStatus: ''
 
 };
@@ -18,7 +19,8 @@ const search = (state = initialState, action) => {
                 data: [...action.payload.items],
                 total_count: action.payload.total_count,
                 totalPage: page,
-                errorStatus: ''
+                errorStatus: '',
+                loading: false,
             };
         case SET_VALUE:
             return {
@@ -30,6 +32,12 @@ const search = (state = initialState, action) => {
             return {
                 ...state,
                 errorStatus: action.payload,
+                loading: false,
+            }
+        case LOADING:
+            return {
+                ...state,
+                loading: true,
             }
 
         default:

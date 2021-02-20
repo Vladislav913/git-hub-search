@@ -1,6 +1,7 @@
 export const GET_DATA = 'SET_DATA';
 export const SET_VALUE = 'SET_VALUE';
 export const SET_ERROR = 'SET_ERROR';
+export const LOADING = 'LOADING';
 
 export const setData = (data) =>{
   return{
@@ -17,9 +18,14 @@ export const setValue = (value) =>{
 }
 
 export const setError = (text) =>{
-    console.log('1' + text)
     return{
         type: SET_ERROR,
         payload: text,
+    }
+}
+
+export const actLoading = () =>{
+    return{
+        type: LOADING,
     }
 }
