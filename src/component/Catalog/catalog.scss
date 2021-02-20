@@ -1,0 +1,44 @@
+
+.catalog {
+  padding: 20px 0 50px 0;
+
+  &__list {
+    padding: 0;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__select-box {
+    width: 200px;
+  }
+
+  &__pagination-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  a, a:active, a:hover {
+    text-decoration: none
+  }
+
+  a {
+    display: inline-block;
+    cursor: pointer
+  }
+}
+
+.container {
+  max-width: 1170px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .catalog {
+    padding: 20px 20px 50px 20px;
+  }
+}
